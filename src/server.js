@@ -9,3 +9,10 @@ app.get('/', async () => {
 app.listen({
     port: 3000
 });
+
+const pool = require('./database/connection');
+
+app.get('/teste-db', async () => {
+    const resultado = await pool.query('SELECT NOW()');
+    return resultado.rows;
+});
